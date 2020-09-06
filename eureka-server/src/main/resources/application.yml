@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: eureka
+eureka:
+  client:
+   # 不向注册中心注册自己：正式环境eureka集群状态下设置为true
+    register-with-eureka: false
+  # 获取注册信息：正式环境eureka集群状态下设置为true
+    fetch-registry: false
+  server:
+  # 关闭自我保护模式：正式环境建议设置为true
+    enable-self-preservation: false
+server:
+  # eureka 推荐端口号
+  port: 8761
