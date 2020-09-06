@@ -4,13 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.core.env.Environment;
 
 /**
  * Created by ZHX on 2020/9/6.
  */
 @SpringBootApplication
-
+@EnableEurekaClient
 public class SystemApp {
     private static final Logger LOG = LoggerFactory.getLogger(SystemApp.class);
     public static void main(String[] args) {
