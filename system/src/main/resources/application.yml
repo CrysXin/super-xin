@@ -1,7 +1,17 @@
 spring:
   application:
     name: system
+  datasource:
+    url: jdbc:mysql:///course?characterEncording=UTF8&autoReconnect=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
 
 server:
-
-  port: 9000
+  port: 9002
+eureka:
+  client:
+    service-url:
+     defaultZone: http://127.0.0.1:8761/eureka/
+mybatis:
+  mapper-locations: calsspath:/mapper/*.xml
