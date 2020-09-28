@@ -1,4 +1,4 @@
-package com.course.business.controller.admin;
+package com.course.${module}.controller.admin;
 
 import com.course.server.dto.${Domain}Dto;
 import com.course.server.dto.PageDto;
@@ -22,9 +22,10 @@ public class ${Domain}Controller {
     /**
      * Created by ZHX on 2020/9/6.
      */
+
     private static final Logger LOG = LoggerFactory.getLogger(${Domain}Controller.class);
 
-    public static  final  String BUSINESS_NAME = "大章";
+    public static final String BUSINESS_NAME = "${tableNameCn}";
     @Resource
     ${Domain}Service ${domain}Service;
 

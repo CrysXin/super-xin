@@ -22,9 +22,10 @@ public class SectionController {
     /**
      * Created by ZHX on 2020/9/6.
      */
+
     private static final Logger LOG = LoggerFactory.getLogger(SectionController.class);
 
-    public static  final  String BUSINESS_NAME = "小节";
+    public static final String BUSINESS_NAME = "小节";
     @Resource
     SectionService sectionService;
 

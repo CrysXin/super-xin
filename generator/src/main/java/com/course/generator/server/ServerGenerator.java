@@ -14,10 +14,10 @@ import java.util.Map;
 public class ServerGenerator {
 
     //com.course.business.controller.admin
-//    static String MODULE = "business";
+    static String MODULE = "business";
 //    static String toDtoPath = "server\\src\\main\\java\\com\\course\\server\\dto\\";
     static String toServicePath = "server\\src\\main\\java\\com\\course\\server\\service\\";
-    static String toControllerPath = "business\\src\\main\\java\\com\\course\\business\\controller\\admin\\";
+    static String toControllerPath = MODULE + "\\src\\main\\java\\com\\course\\" + MODULE + "\\controller\\admin\\";
     //static String generatorConfigPath = "server\\src\\main\\resources\\generator\\generatorConfig.xml";
 
 //    static String toServicePath = "server\\src\\main\\java\\com\\course\\server\\service\\";
@@ -27,9 +27,13 @@ public class ServerGenerator {
 
         String Domain = "Section";
         String domain ="section";
+        String tableNameCn = "小节";
+        String module = MODULE;
         Map<String, Object> map = new HashMap<>();
         map.put("Domain", Domain);
         map.put("domain", domain);
+        map.put("module", module);
+        map.put("tableNameCn", tableNameCn);
 
         // 生成service
         FreemarkerUtil.initConfig("service.ftl");
