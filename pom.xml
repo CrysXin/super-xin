@@ -8,6 +8,9 @@
 		<module>system</module>
         <module>gateway</module>
 		<module>server</module>
+		<module>feign</module>
+        <module>business</module>
+		<module>generator</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -55,6 +58,24 @@
 				<groupId>com.course</groupId>
 				<artifactId>server</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.pagehelper</groupId>
+				<artifactId>pagehelper-spring-boot-starter</artifactId>
+				<version>1.2.10</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.freemarker</groupId>
+				<artifactId>freemarker</artifactId>
+				<version>2.3.29</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>1.2.55</version>
 			</dependency>
 		</dependencies>
 

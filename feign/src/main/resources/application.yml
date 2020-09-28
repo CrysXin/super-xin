@@ -1,9 +1,9 @@
 spring:
   application:
-    name: gateway
+    name: feign
 
 server:
-  port: 9000
+  port: 1111
 eureka:
   client:
     service-url:

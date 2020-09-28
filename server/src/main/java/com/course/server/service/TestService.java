@@ -17,7 +17,7 @@ public class TestService {
     @Resource
     TestMapper testMapper;
 
-    @RequestMapping("/list")
+
     public List<Test> list(){
 
         return  testMapper.selectByExample(null);
