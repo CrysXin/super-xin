@@ -1,136 +1,175 @@
 package com.course.server.dto;
 
-import java.util.Date;
+    import java.util.Date;
+    import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class SectionDto {
-    private String id;
 
-    private String title;
+/**
+* id
+*/
+private String id;
 
-    private String courseId;
+/**
+* 标题
+*/
+private String title;
 
-    private String chapterId;
+/**
+* 课程|course.id
+*/
+private String courseId;
 
-    private String video;
+/**
+* 大章|chapter.id
+*/
+private String chapterId;
 
-    private Integer time;
+/**
+* 视频
+*/
+private String video;
 
-    private String charge;
+/**
+* 时长|单位秒
+*/
+private Integer time;
 
-    private Integer sort;
+/**
+* 收费|C 收费；F 免费
+*/
+private String charge;
 
-    private Date createdAt;
+/**
+* 顺序
+*/
+private Integer sort;
 
-    private Date updatedAt;
+/**
+* 创建时间
+*/
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+private Date createdAt;
 
-    private String vod;
+/**
+* 修改时间
+*/
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+private Date updatedAt;
 
-    public String getId() {
-        return id;
-    }
+/**
+* vod|阿里云vod
+*/
+private String vod;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+public String getId() {
+return id;
+}
 
-    public String getTitle() {
-        return title;
-    }
+public void setId(String id) {
+this.id = id;
+}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+public String getTitle() {
+return title;
+}
 
-    public String getCourseId() {
-        return courseId;
-    }
+public void setTitle(String title) {
+this.title = title;
+}
 
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
-    }
+public String getCourseId() {
+return courseId;
+}
 
-    public String getChapterId() {
-        return chapterId;
-    }
+public void setCourseId(String courseId) {
+this.courseId = courseId;
+}
 
-    public void setChapterId(String chapterId) {
-        this.chapterId = chapterId;
-    }
+public String getChapterId() {
+return chapterId;
+}
 
-    public String getVideo() {
-        return video;
-    }
+public void setChapterId(String chapterId) {
+this.chapterId = chapterId;
+}
 
-    public void setVideo(String video) {
-        this.video = video;
-    }
+public String getVideo() {
+return video;
+}
 
-    public Integer getTime() {
-        return time;
-    }
+public void setVideo(String video) {
+this.video = video;
+}
 
-    public void setTime(Integer time) {
-        this.time = time;
-    }
+public Integer getTime() {
+return time;
+}
 
-    public String getCharge() {
-        return charge;
-    }
+public void setTime(Integer time) {
+this.time = time;
+}
 
-    public void setCharge(String charge) {
-        this.charge = charge;
-    }
+public String getCharge() {
+return charge;
+}
 
-    public Integer getSort() {
-        return sort;
-    }
+public void setCharge(String charge) {
+this.charge = charge;
+}
 
-    public void setSort(Integer sort) {
-        this.sort = sort;
-    }
+public Integer getSort() {
+return sort;
+}
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
+public void setSort(Integer sort) {
+this.sort = sort;
+}
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
+public Date getCreatedAt() {
+return createdAt;
+}
 
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
+public void setCreatedAt(Date createdAt) {
+this.createdAt = createdAt;
+}
 
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+public Date getUpdatedAt() {
+return updatedAt;
+}
 
-    public String getVod() {
-        return vod;
-    }
+public void setUpdatedAt(Date updatedAt) {
+this.updatedAt = updatedAt;
+}
 
-    public void setVod(String vod) {
-        this.vod = vod;
-    }
+public String getVod() {
+return vod;
+}
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", title=").append(title);
-        sb.append(", courseId=").append(courseId);
-        sb.append(", chapterId=").append(chapterId);
-        sb.append(", video=").append(video);
-        sb.append(", time=").append(time);
-        sb.append(", charge=").append(charge);
-        sb.append(", sort=").append(sort);
-        sb.append(", createdAt=").append(createdAt);
-        sb.append(", updatedAt=").append(updatedAt);
-        sb.append(", vod=").append(vod);
-        sb.append("]");
-        return sb.toString();
-    }
+public void setVod(String vod) {
+this.vod = vod;
+}
+
+
+@Override
+public String toString() {
+StringBuilder sb = new StringBuilder();
+sb.append(getClass().getSimpleName());
+sb.append(" [");
+sb.append("Hash = ").append(hashCode());
+sb.append(", id=").append(id);
+sb.append(", title=").append(title);
+sb.append(", courseId=").append(courseId);
+sb.append(", chapterId=").append(chapterId);
+sb.append(", video=").append(video);
+sb.append(", time=").append(time);
+sb.append(", charge=").append(charge);
+sb.append(", sort=").append(sort);
+sb.append(", createdAt=").append(createdAt);
+sb.append(", updatedAt=").append(updatedAt);
+sb.append(", vod=").append(vod);
+sb.append("]");
+return sb.toString();
+}
+
 }
