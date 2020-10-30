@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div id="navbar" class="navbar navbar-default          ace-save-state">
+	<div>
+		<div id="navbar" class="navbar navbar-default          ace-save-state">
 			<div class="navbar-container ace-save-state" id="navbar-container">
 				<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
 					<span class="sr-only">Toggle sidebar</span>
@@ -320,10 +320,7 @@
 		</div>
 
 		<div class="main-container ace-save-state" id="main-container">
-		
-
 			<div id="sidebar" class="sidebar                  responsive                    ace-save-state">
-				
 
 				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
 					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
@@ -395,10 +392,11 @@
 							</li>
 						</ul>
 					</li>
+
 					<li class="active open">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text">业务管理 </span>
+							<span class="menu-text"> 业务管理 </span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -414,16 +412,18 @@
 
 								<b class="arrow"></b>
 							</li>
+							<li class="active" id="business-section-sidebar">
+								<router-link to="/business/section">
+									<i class="menu-icon fa fa-caret-right"></i>
+									小节管理
+								</router-link>
 
-							
+								<b class="arrow"></b>
+							</li>
+
 						</ul>
 					</li>
 
-				
-
-
-
-				
 				</ul><!-- /.nav-list -->
 
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
@@ -433,15 +433,11 @@
 
 			<div class="main-content">
 				<div class="main-content-inner">
-					
-
 					<div class="page-content">
-						
-
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-                                    <router-view/>
+								<router-view/>
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
@@ -453,8 +449,8 @@
 				<div class="footer-inner">
 					<div class="footer-content">
 						<span class="bigger-120">
-							<span class="blue bolder">贾娃School</span>
-							在线视频课程 &copy; 2019-2099
+							<span class="blue bolder">甲蛙</span>
+							在线视频课程 &copy; 2099-2099
 						</span>
 
 						&nbsp; &nbsp;
@@ -479,56 +475,54 @@
 				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 			</a>
 		</div><!-- /.main-container -->
-    </div>
+	</div>
 </template>
+
 <script>
-export default {
-  name: 'admin',
-  mounted(){
-	let _this = this;
-    $('body').removeClass( 'login-layout light-login');
-	$('body').attr('class', 'no-skin');
-	_this.activeSidebar(_this.$route.name.replace("/", "-") + "-sidebar");
-  },
-    watch: {
-      $route: {
-        handler:function(val, oldVal){
-          // sidebar激活样式方法二
-          console.log("---->页面跳转：", val, oldVal);
-          let _this = this;
-
-        //   if (!_this.hasResourceRouter(val.name)) {
-        //     _this.$router.push("/login");
-        //     return;
-        //   }
-
-          _this.$nextTick(function(){  //页面加载完成后执行
+    export default {
+        name: "admin",
+        mounted: function() {
+            let _this = this;
+            $("body").removeClass("login-layout light-login");
+            $("body").attr("class", "no-skin");
+            // console.log("admin");
+            // sidebar激活样式方法二
             _this.activeSidebar(_this.$route.name.replace("/", "-") + "-sidebar");
-          })
-        }
-      }
-    },
- methods:{
-	login() {
-	this.$router.push('/admin')
-    },
-     activeSidebar: function (id) {
-        // 兄弟菜单去掉active样式，自身增加active样式
-        $("#" + id).siblings().removeClass("active");
-        $("#" + id).siblings().find("li").removeClass("active");
-        $("#" + id).addClass("active");
+        },
+        watch: {
+            $route: {
+                handler:function(val, oldVal){
+                    // sidebar激活样式方法二
+                    console.log("---->页面跳转：", val, oldVal);
+                    let _this = this;
+                    _this.$nextTick(function(){  //页面加载完成后执行
+                        _this.activeSidebar(_this.$route.name.replace("/", "-") + "-sidebar");
+                    })
+                }
+            }
+        },
+        methods: {
+            login () {
+                this.$router.push("/admin")
+            },
 
-        // 如果有父菜单，父菜单的兄弟菜单去掉open active，父菜单增加open active
-        let parentLi = $("#" + id).parents("li");
-        if (parentLi) {
-          parentLi.siblings().removeClass("open active");
-          parentLi.siblings().find("li").removeClass("active");
-          parentLi.addClass("open active");
-        }
-      }
-  }
+            /**
+             * 菜单激活样式，id是当前点击的菜单的id
+             * @param id
+             */
+            activeSidebar: function (id) {
+                // 兄弟菜单去掉active样式，自身增加active样式
+                $("#" + id).siblings().removeClass("active");
+                $("#" + id).siblings().find("li").removeClass("active");
+                $("#" + id).addClass("active");
 
-      
-}
-   
+                // 如果有父菜单，父菜单的兄弟菜单去掉open active，父菜单增加open active
+                let parentLi = $("#" + id).parents("li");
+                if (parentLi) {
+                    parentLi.siblings().removeClass("open active");
+                    parentLi.addClass("open active");
+                }
+            }
+        }
+    }
 </script>
