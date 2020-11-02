@@ -11,6 +11,7 @@
 
     <artifactId>generator</artifactId>
     <dependencies>
+        <!-- 模板引擎freemarker -->
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
@@ -20,18 +21,17 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+
+        <!-- 读xml -->
         <dependency>
             <groupId>org.dom4j</groupId>
             <artifactId>dom4j</artifactId>
-            <version>2.1.1</version>
         </dependency>
-
 
         <dependency>
             <groupId>com.course</groupId>
             <artifactId>server</artifactId>
         </dependency>
-
     </dependencies>
 
 </project>

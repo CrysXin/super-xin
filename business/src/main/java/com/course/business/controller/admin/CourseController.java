@@ -1,9 +1,9 @@
 package com.course.business.controller.admin;
 
+import com.course.server.dto.CourseDto;
 import com.course.server.dto.PageDto;
 import com.course.server.dto.ResponseDto;
-import com.course.server.dto.SectionDto;
-import com.course.server.service.SectionService;
+import com.course.server.service.CourseService;
 import com.course.server.util.ValidatorUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
 @RestController
-@RequestMapping("/admin/section")
-public class SectionController {
+@RequestMapping("/admin/course")
+public class CourseController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(SectionController.class);
-    public static final String BUSINESS_NAME = "小节";
+    private static final Logger LOG = LoggerFactory.getLogger(CourseController.class);
+    public static final String BUSINESS_NAME = "课程";
 
     @Resource
-    private SectionService sectionService;
+    private CourseService courseService;
 
     /**
      * 列表查询
@@ -27,7 +27,7 @@ public class SectionController {
     @PostMapping("/list")
     public ResponseDto list(@RequestBody PageDto pageDto) {
         ResponseDto responseDto = new ResponseDto();
-        sectionService.list(pageDto);
+        courseService.list(pageDto);
         responseDto.setContent(pageDto);
         return responseDto;
     }
@@ -36,15 +36,16 @@ public class SectionController {
      * 保存，id有值时更新，无值时新增
      */
     @PostMapping("/save")
-    public ResponseDto save(@RequestBody SectionDto sectionDto) {
+    public ResponseDto save(@RequestBody CourseDto courseDto) {
         // 保存校验
-        ValidatorUtil.require(sectionDto.getTitle(), "标题");
-        ValidatorUtil.length(sectionDto.getTitle(), "标题", 1, 50);
-        ValidatorUtil.length(sectionDto.getVideo(), "视频", 1, 200);
+        ValidatorUtil.require(courseDto.getName(), "名称");
+        ValidatorUtil.length(courseDto.getName(), "名称", 1, 50);
+        ValidatorUtil.length(courseDto.getSummary(), "概述", 1, 2000);
+        ValidatorUtil.length(courseDto.getImage(), "封面", 1, 100);
 
         ResponseDto responseDto = new ResponseDto();
-        sectionService.save(sectionDto);
-        responseDto.setContent(sectionDto);
+        courseService.save(courseDto);
+        responseDto.setContent(courseDto);
         return responseDto;
     }
 
@@ -54,7 +55,7 @@ public class SectionController {
     @DeleteMapping("/delete/{id}")
     public ResponseDto delete(@PathVariable String id) {
         ResponseDto responseDto = new ResponseDto();
-        sectionService.delete(id);
+        courseService.delete(id);
         return responseDto;
     }
 }

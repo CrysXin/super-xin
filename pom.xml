@@ -41,25 +41,24 @@
 				<scope>import</scope>
 			</dependency>
 
-
+			<!-- 集成mybatis -->
 			<dependency>
 				<groupId>org.mybatis.spring.boot</groupId>
 				<artifactId>mybatis-spring-boot-starter</artifactId>
-				<version>2.1.1</version>
+				<version>1.3.2</version>
 			</dependency>
-
 			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
-				<version>5.1.46</version>
+				<version>5.1.37</version>
 			</dependency>
-
 			<dependency>
 				<groupId>com.course</groupId>
 				<artifactId>server</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 
+			<!-- mybatis分页插件pagehelper -->
 			<dependency>
 				<groupId>com.github.pagehelper</groupId>
 				<artifactId>pagehelper-spring-boot-starter</artifactId>
@@ -67,23 +66,25 @@
 			</dependency>
 
 			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>1.2.60</version>
+			</dependency>
+
+			<!-- 模板引擎freemarker -->
+			<dependency>
 				<groupId>org.freemarker</groupId>
 				<artifactId>freemarker</artifactId>
 				<version>2.3.29</version>
 			</dependency>
 
+			<!-- 读xml -->
 			<dependency>
-				<groupId>com.alibaba</groupId>
-				<artifactId>fastjson</artifactId>
-				<version>1.2.55</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-security</artifactId>
+				<groupId>org.dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>2.1.1</version>
 			</dependency>
 		</dependencies>
-
-
 	</dependencyManagement>
 
 	<build>

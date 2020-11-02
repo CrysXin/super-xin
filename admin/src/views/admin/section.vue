@@ -75,7 +75,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label">章</label>
+                <label class="col-sm-2 control-label">大章</label>
                 <div class="col-sm-10">
                   <input v-model="section.chapterId" class="form-control">
                 </div>

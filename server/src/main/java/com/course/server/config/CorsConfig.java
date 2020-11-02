@@ -1,4 +1,4 @@
-//package com.course.server.config;
+package com.course.server.config;//package com.course.server.config;
 //
 //import org.springframework.context.annotation.Configuration;
 //import org.springframework.web.cors.CorsConfiguration;

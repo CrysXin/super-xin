@@ -2,8 +2,9 @@ package com.course.server.mapper;
 
 import com.course.server.domain.Section;
 import com.course.server.domain.SectionExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface SectionMapper {
     long countByExample(SectionExample example);
