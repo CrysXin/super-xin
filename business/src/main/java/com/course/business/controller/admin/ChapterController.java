@@ -11,40 +11,25 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
-
-/**
- * Created by ZHX on 2020/9/6.
- */
-
 @RestController
 @RequestMapping("/admin/chapter")
 public class ChapterController {
-    /**
-     * Created by ZHX on 2020/9/6.
-     */
+
     private static final Logger LOG = LoggerFactory.getLogger(ChapterController.class);
+    public static final String BUSINESS_NAME = "大章";
 
-    public static  final  String BUSINESS_NAME = "大章";
     @Resource
-    ChapterService chapterService;
+    private ChapterService chapterService;
 
-
-//
-//    @RequestMapping("/a")
-//    public String chapter(){
-//        return "success";
-//    }
-
-
-
-
-    @RequestMapping("/list")
-    public ResponseDto list1(@RequestBody PageDto pageDto){
+    /**
+     * 列表查询
+     */
+    @PostMapping("/list")
+    public ResponseDto list(@RequestBody PageDto pageDto) {
         ResponseDto responseDto = new ResponseDto();
         chapterService.list(pageDto);
-        LOG.info("pageDto: {}",pageDto);
         responseDto.setContent(pageDto);
-        return  responseDto;
+        return responseDto;
     }
 
     /**
@@ -62,12 +47,14 @@ public class ChapterController {
         responseDto.setContent(chapterDto);
         return responseDto;
     }
+
+    /**
+     * 删除
+     */
     @DeleteMapping("/delete/{id}")
-    public ResponseDto delete(@PathVariable String  id){
+    public ResponseDto delete(@PathVariable String id) {
         ResponseDto responseDto = new ResponseDto();
         chapterService.delete(id);
-        LOG.info("id: {}",id);
-        return  responseDto;
+        return responseDto;
     }
-
 }

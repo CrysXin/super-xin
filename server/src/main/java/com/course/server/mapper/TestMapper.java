@@ -1,7 +1,7 @@
 package com.course.server.mapper;
 
-import com.course.server.pojo.Test;
-import com.course.server.pojo.TestExample;
+import com.course.server.domain.Test;
+import com.course.server.domain.TestExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

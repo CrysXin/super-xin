@@ -10,6 +10,7 @@ public class Field {
     private String comment; // 注释：课程|ID
     private Boolean nullAble; // 是否可为空
     private Integer length; // 字符串长度
+
     public String getName() {
         return name;
     }
@@ -65,6 +66,7 @@ public class Field {
     public void setJavaType(String javaType) {
         this.javaType = javaType;
     }
+
     public Boolean getNullAble() {
         return nullAble;
     }
@@ -91,6 +93,8 @@ public class Field {
         sb.append(", type='").append(type).append('\'');
         sb.append(", javaType='").append(javaType).append('\'');
         sb.append(", comment='").append(comment).append('\'');
+        sb.append(", nullAble=").append(nullAble);
+        sb.append(", length=").append(length);
         sb.append('}');
         return sb.toString();
     }

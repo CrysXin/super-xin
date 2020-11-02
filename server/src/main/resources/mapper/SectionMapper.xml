@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.course.server.mapper.SectionMapper">
-  <resultMap id="BaseResultMap" type="com.course.server.pojo.Section">
+  <resultMap id="BaseResultMap" type="com.course.server.domain.Section">
     <id column="id" jdbcType="CHAR" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="course_id" jdbcType="CHAR" property="courseId" />
@@ -12,7 +12,6 @@
     <result column="sort" jdbcType="INTEGER" property="sort" />
     <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
     <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
-    <result column="vod" jdbcType="CHAR" property="vod" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,10 +72,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, title, course_id, chapter_id, video, time, charge, sort, created_at, updated_at, 
-    vod
+    id, title, course_id, chapter_id, video, time, charge, sort, created_at, updated_at
   </sql>
-  <select id="selectByExample" parameterType="com.course.server.pojo.SectionExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.course.server.domain.SectionExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -100,23 +98,23 @@
     delete from section
     where id = #{id,jdbcType=CHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.course.server.pojo.SectionExample">
+  <delete id="deleteByExample" parameterType="com.course.server.domain.SectionExample">
     delete from section
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.course.server.pojo.Section">
+  <insert id="insert" parameterType="com.course.server.domain.Section">
     insert into section (id, title, course_id, 
       chapter_id, video, time, 
       charge, sort, created_at, 
-      updated_at, vod)
+      updated_at)
     values (#{id,jdbcType=CHAR}, #{title,jdbcType=VARCHAR}, #{courseId,jdbcType=CHAR}, 
       #{chapterId,jdbcType=CHAR}, #{video,jdbcType=VARCHAR}, #{time,jdbcType=INTEGER}, 
       #{charge,jdbcType=CHAR}, #{sort,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, 
-      #{updatedAt,jdbcType=TIMESTAMP}, #{vod,jdbcType=CHAR})
+      #{updatedAt,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.course.server.pojo.Section">
+  <insert id="insertSelective" parameterType="com.course.server.domain.Section">
     insert into section
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -148,9 +146,6 @@
       </if>
       <if test="updatedAt != null">
         updated_at,
-      </if>
-      <if test="vod != null">
-        vod,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -184,12 +179,9 @@
       <if test="updatedAt != null">
         #{updatedAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="vod != null">
-        #{vod,jdbcType=CHAR},
-      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.course.server.pojo.SectionExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.course.server.domain.SectionExample" resultType="java.lang.Long">
     select count(*) from section
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -228,9 +220,6 @@
       <if test="record.updatedAt != null">
         updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.vod != null">
-        vod = #{record.vod,jdbcType=CHAR},
-      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -247,13 +236,12 @@
       charge = #{record.charge,jdbcType=CHAR},
       sort = #{record.sort,jdbcType=INTEGER},
       created_at = #{record.createdAt,jdbcType=TIMESTAMP},
-      updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
-      vod = #{record.vod,jdbcType=CHAR}
+      updated_at = #{record.updatedAt,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.course.server.pojo.Section">
+  <update id="updateByPrimaryKeySelective" parameterType="com.course.server.domain.Section">
     update section
     <set>
       <if test="title != null">
@@ -283,13 +271,10 @@
       <if test="updatedAt != null">
         updated_at = #{updatedAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="vod != null">
-        vod = #{vod,jdbcType=CHAR},
-      </if>
     </set>
     where id = #{id,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.course.server.pojo.Section">
+  <update id="updateByPrimaryKey" parameterType="com.course.server.domain.Section">
     update section
     set title = #{title,jdbcType=VARCHAR},
       course_id = #{courseId,jdbcType=CHAR},
@@ -299,8 +284,7 @@
       charge = #{charge,jdbcType=CHAR},
       sort = #{sort,jdbcType=INTEGER},
       created_at = #{createdAt,jdbcType=TIMESTAMP},
-      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
-      vod = #{vod,jdbcType=CHAR}
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=CHAR}
   </update>
 </mapper>

@@ -1,4 +1,4 @@
-package com.course.server.pojo;
+package com.course.server.domain;
 
 public class Chapter {
     private String id;

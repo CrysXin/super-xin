@@ -11,75 +11,57 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
-
-/**
- * Created by ZHX on 2020/9/6.
- */
-
 @RestController
 @RequestMapping("/admin/${domain}")
 public class ${Domain}Controller {
-    /**
-     * Created by ZHX on 2020/9/6.
-     */
 
     private static final Logger LOG = LoggerFactory.getLogger(${Domain}Controller.class);
-
     public static final String BUSINESS_NAME = "${tableNameCn}";
+
     @Resource
-    ${Domain}Service ${domain}Service;
+    private ${Domain}Service ${domain}Service;
 
-
-//
-//    @RequestMapping("/a")
-//    public String ${domain}(){
-//        return "success";
-//    }
-
-
-
-
-    @RequestMapping("/list")
-    public ResponseDto list1(@RequestBody PageDto pageDto){
+    /**
+     * 列表查询
+     */
+    @PostMapping("/list")
+    public ResponseDto list(@RequestBody PageDto pageDto) {
         ResponseDto responseDto = new ResponseDto();
         ${domain}Service.list(pageDto);
-        LOG.info("pageDto: {}",pageDto);
         responseDto.setContent(pageDto);
-        return  responseDto;
+        return responseDto;
     }
+
+    /**
+     * 保存，id有值时更新，无值时新增
+     */
     @PostMapping("/save")
-    public ResponseDto list1(@RequestBody ${Domain}Dto ${domain}Dto){
-        LOG.info("${domain}Dto: {}",${domain}Dto);
-
-
-        //保存校验
+    public ResponseDto save(@RequestBody ${Domain}Dto ${domain}Dto) {
+        // 保存校验
         <#list fieldList as field>
+        <#if field.name!="id" && field.nameHump!="createdAt" && field.nameHump!="updatedAt" && field.nameHump!="sort">
             <#if !field.nullAble>
-            ValidatorUtil.require(${domain}Dto.get${field.nameBigHump}(), "${field.nameCn}");
+        ValidatorUtil.require(${domain}Dto.get${field.nameBigHump}(), "${field.nameCn}");
             </#if>
             <#if (field.length > 0)>
-            ValidatorUtil.length(${domain}Dto.get${field.nameBigHump}(), "${field.nameCn}", 1, ${field.length});
+        ValidatorUtil.length(${domain}Dto.get${field.nameBigHump}(), "${field.nameCn}", 1, ${field.length});
             </#if>
+        </#if>
         </#list>
 
         ResponseDto responseDto = new ResponseDto();
         ${domain}Service.save(${domain}Dto);
         responseDto.setContent(${domain}Dto);
         return responseDto;
-
-
-//        ResponseDto responseDto = new ResponseDto();
-//        ${domain}Service.save(${domain}Dto);
-//
-//        responseDto.setContent(${domain}Dto);
-//        return  responseDto;
     }
+
+    /**
+     * 删除
+     */
     @DeleteMapping("/delete/{id}")
-    public ResponseDto delete(@PathVariable String  id){
+    public ResponseDto delete(@PathVariable String id) {
         ResponseDto responseDto = new ResponseDto();
         ${domain}Service.delete(id);
-        LOG.info("id: {}",id);
-        return  responseDto;
+        return responseDto;
     }
-
 }
