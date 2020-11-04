@@ -31,6 +31,12 @@ public class CategoryController {
         responseDto.setContent(pageDto);
         return responseDto;
     }
+    @PostMapping("/all")
+    public ResponseDto all() {
+        ResponseDto responseDto = new ResponseDto();
+        responseDto.setContent( categoryService.all());
+        return responseDto;
+    }
 
     /**
      * 保存，id有值时更新，无值时新增
