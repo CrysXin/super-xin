@@ -13,21 +13,27 @@ import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
-import java.util.List;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class CourseService {
-private static final Logger LOG = LoggerFactory.getLogger(CourseService.class);
+
+    private static final Logger LOG = LoggerFactory.getLogger(CourseService.class);
 
     @Resource
     private CourseMapper courseMapper;
 
     @Resource
     private MyCourseMapper myCourseMapper;
+
+    @Resource
+    private CourseCategoryService courseCategoryService;
+
     /**
      * 列表查询
      */
@@ -45,6 +51,7 @@ private static final Logger LOG = LoggerFactory.getLogger(CourseService.class);
     /**
      * 保存，id有值时更新，无值时新增
      */
+    @Transactional
     public void save(CourseDto courseDto) {
         Course course = CopyUtil.copy(courseDto, Course.class);
         if (StringUtils.isEmpty(courseDto.getId())) {
@@ -52,6 +59,9 @@ private static final Logger LOG = LoggerFactory.getLogger(CourseService.class);
         } else {
             this.update(course);
         }
+
+        // 批量保存课程分类
+        courseCategoryService.saveBatch(courseDto.getId(), courseDto.getCategorys());
     }
 
     /**
