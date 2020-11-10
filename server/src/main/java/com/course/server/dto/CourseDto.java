@@ -2,6 +2,8 @@ package com.course.server.dto;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class CourseDto {
@@ -36,6 +38,7 @@ public class CourseDto {
      */
     private String image;
 
+    private List<CategoryDto> categorys;
     /**
      * 级别|枚举[CourseLevelEnum]：ONE("1", "初级"),TWO("2", "中级"),THREE("3", "高级")
      */

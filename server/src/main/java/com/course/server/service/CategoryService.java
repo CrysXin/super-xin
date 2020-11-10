@@ -72,6 +72,19 @@ public class CategoryService {
      * 删除
      */
     public void delete(String id) {
+        deleteChild(id);
         categoryMapper.deleteByPrimaryKey(id);
+    }
+
+    /**
+     * 删除子节点
+     */
+    public void deleteChild(String id){
+        Category category = categoryMapper.selectByPrimaryKey(id);
+        if ("00000000".equals(category.getParent())){
+            CategoryExample example =new CategoryExample();
+            example.createCriteria().andParentEqualTo(category.getId());
+            categoryMapper.deleteByExample(example);
+        }
     }
 }
