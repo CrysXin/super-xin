@@ -4,6 +4,7 @@ import com.course.server.dto.ResponseDto;
 import com.course.server.util.UuidUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,13 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/admin")
 public class UploadController {
+
+    @Value("${file.path}")
+    String filePath;
+
+    @Value("${file.domain}")
+    String urlPath;
+
     private static final Logger LOG = LoggerFactory.getLogger(UploadController.class);
 
     public static final String BUSINESS_NAME = "文件上传";
@@ -30,7 +38,7 @@ public class UploadController {
 
        String newName = UuidUtil.getShortUuid()+fileName;
 
-        File dest = new File("D:/upload/imgs/"+newName);
+        File dest = new File(filePath+ "teacher/" +newName);
         try {
             file.transferTo(dest);
         } catch (IOException e) {
@@ -38,6 +46,7 @@ public class UploadController {
         }
         LOG.info("文件路径:{}",dest.getAbsolutePath());
         ResponseDto responseDto = new ResponseDto();
+        responseDto.setContent(urlPath + "f/teacher/"  + newName);
         return responseDto;
     }
 }
