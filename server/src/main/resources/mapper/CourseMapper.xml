@@ -94,7 +94,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from course
     where id = #{id,jdbcType=CHAR}
@@ -271,19 +271,19 @@
   <update id="updateByExample" parameterType="map">
     update course
     set id = #{record.id,jdbcType=CHAR},
-      name = #{record.name,jdbcType=VARCHAR},
-      summary = #{record.summary,jdbcType=VARCHAR},
-      time = #{record.time,jdbcType=INTEGER},
-      price = #{record.price,jdbcType=DECIMAL},
-      image = #{record.image,jdbcType=VARCHAR},
-      level = #{record.level,jdbcType=CHAR},
-      charge = #{record.charge,jdbcType=CHAR},
-      status = #{record.status,jdbcType=CHAR},
-      enroll = #{record.enroll,jdbcType=INTEGER},
-      sort = #{record.sort,jdbcType=INTEGER},
-      created_at = #{record.createdAt,jdbcType=TIMESTAMP},
-      updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
-      teacher_id = #{record.teacherId,jdbcType=CHAR}
+    name = #{record.name,jdbcType=VARCHAR},
+    summary = #{record.summary,jdbcType=VARCHAR},
+    time = #{record.time,jdbcType=INTEGER},
+    price = #{record.price,jdbcType=DECIMAL},
+    image = #{record.image,jdbcType=VARCHAR},
+    level = #{record.level,jdbcType=CHAR},
+    charge = #{record.charge,jdbcType=CHAR},
+    status = #{record.status,jdbcType=CHAR},
+    enroll = #{record.enroll,jdbcType=INTEGER},
+    sort = #{record.sort,jdbcType=INTEGER},
+    created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+    updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+    teacher_id = #{record.teacherId,jdbcType=CHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
