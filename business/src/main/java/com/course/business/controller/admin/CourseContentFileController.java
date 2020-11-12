@@ -1,7 +1,6 @@
 package com.course.business.controller.admin;
 
 import com.course.server.dto.CourseContentFileDto;
-import com.course.server.dto.PageDto;
 import com.course.server.dto.ResponseDto;
 import com.course.server.service.CourseContentFileService;
 import com.course.server.util.ValidatorUtil;
@@ -13,7 +12,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/courseContentFile")
+@RequestMapping("/admin/course-content-file")
 public class CourseContentFileController {
 
     private static final Logger LOG = LoggerFactory.getLogger(CourseContentFileController.class);
@@ -33,14 +32,13 @@ public class CourseContentFileController {
         return responseDto;
     }
 
-
     /**
      * 保存，id有值时更新，无值时新增
      */
     @PostMapping("/save")
     public ResponseDto save(@RequestBody CourseContentFileDto courseContentFileDto) {
         // 保存校验
-        ValidatorUtil.require(courseContentFileDto.getCourseId(), "课程id");
+        ValidatorUtil.require(courseContentFileDto.getCourseId(), "课程ID");
         ValidatorUtil.length(courseContentFileDto.getUrl(), "地址", 1, 100);
         ValidatorUtil.length(courseContentFileDto.getName(), "文件名", 1, 100);
 
