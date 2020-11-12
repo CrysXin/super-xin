@@ -1,7 +1,5 @@
 package com.course.generator.enums;
 
-
-
 import com.course.server.enums.*;
 
 import java.io.FileOutputStream;
@@ -23,6 +21,7 @@ public class EnumGenerator {
             toJson(CourseLevelEnum.class, bufferObject, bufferArray);
             toJson(CourseChargeEnum.class, bufferObject, bufferArray);
             toJson(CourseStatusEnum.class, bufferObject, bufferArray);
+            toJson(FileUseEnum.class, bufferObject, bufferArray);
 
             StringBuffer buffer = bufferObject.append("\r\n").append(bufferArray);
             writeJs(buffer);

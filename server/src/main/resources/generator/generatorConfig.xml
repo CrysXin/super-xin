@@ -6,6 +6,7 @@
 <generatorConfiguration>
     <context id="Mysql" targetRuntime="MyBatis3" defaultModelType="flat">
 
+        <property name="autoDelimitKeywords" value="true"/>
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
 
@@ -44,6 +45,7 @@
 <!--        <table tableName="course" domainObjectName="Course"/> -->
 <!--        <table tableName="category" domainObjectName="Category"/>-->
 <!--        <table tableName="course_content" domainObjectName="CourseContent"/>-->
-        <table tableName="teacher" domainObjectName="Teacher"/>
+<!--        <table tableName="teacher" domainObjectName="Teacher"/>-->
+        <table tableName="file" domainObjectName="File"/>
     </context>
 </generatorConfiguration>
