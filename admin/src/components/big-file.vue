@@ -39,7 +39,7 @@
         let formData = new window.FormData();
         let file = _this.$refs.file.files[0];
 
-        console.log(file);
+        console.log(JSON.stringify(file));
         /*
           name: "test.mp4"
           lastModified: 1901173357457
@@ -50,10 +50,11 @@
         */
 
         // 生成文件标识，标识多次上传的是不是同一个文件
-        let key = hex_md5(file);
+        let key = hex_md5(file.name + file.size + file.type);
         let key10 = parseInt(key, 16);
         let key62 = Tool._10to62(key10);
         console.log(key, key10, key62);
+        console.log(hex_md5(Array()));
         /*
           d41d8cd98f00b204e9800998ecf8427e
           2.8194976848941264e+38
@@ -78,7 +79,8 @@
         }
 
         // 文件分片
-        let shardSize = 10 * 1024 * 1024;    //以10MB为一个分片
+        // let shardSize = 10 * 1024 * 1024;    //以10MB为一个分片
+        let shardSize = 50 * 1024;    //以50KB为一个分片
         let shardIndex = 1;		//分片索引，1表示第1个分片
         let size = file.size;
         let shardTotal = Math.ceil(size / shardSize); //总片数
@@ -148,7 +150,7 @@
 
           param.shard = base64;
 
-          _this.$ajax.post(process.env.VUE_APP_SERVER + '/file/admin/upload', param).then((response) => {
+          _this.$ajax.post(process.env.VUE_APP_SERVER + '/file/admin/oss-append', param).then((response) => {
             let resp = response.data;
             console.log("上传文件成功：", resp);
             Progress.show(parseInt(shardIndex * 100 / shardTotal));
